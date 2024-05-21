@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyCalculator</string>
+    <string name="nameString">Calculator</string>
+    <string name="aString">Nhập a</string>
+    <string name="bString">Nhập b</string>
+    <string name="resultString">Kết quả</string>
+    <string name="btnPlusString">Cộng</string>
+    <string name="btnSubtractString">Trừ</string>
+    <string name="btnMutipleString">Nhân</string>
+    <string name="btnDivisionString">Chia</string>
+</resources>

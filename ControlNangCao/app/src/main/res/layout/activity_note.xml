@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoteActivity"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calendar Notes"
+        android:textColor="@color/design_default_color_error"
+        android:background="@android:color/holo_green_light"
+        android:textSize="28sp"
+        android:textAlignment="center"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light"
+        android:text="ngayfsdasdad"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        />
+    <EditText
+        android:id="@+id/edtWork"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your work here"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hour"
+            android:textSize="20sp"
+            />
+        <EditText
+            android:id="@+id/edtHour"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Minute"
+            android:textSize="20sp"
+            />
+        <EditText
+            android:id="@+id/edtMinute"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnAddWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Work"/>
+    <ListView
+        android:id="@+id/lvWork"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
