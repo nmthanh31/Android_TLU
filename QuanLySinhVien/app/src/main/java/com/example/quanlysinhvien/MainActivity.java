@@ -1,6 +1,7 @@
 package com.example.quanlysinhvien;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -75,20 +76,94 @@ public class MainActivity extends AppCompatActivity {
                 String malop = edtMaLop.getText().toString();
                 String tenlop = edtTenLop.getText().toString();
 
-                int siso = Integer.parseInt(edtSiSo.getText().toString());
+                int siso = Integer.parseInt("0"+edtSiSo.getText().toString());
 
-                ContentValues content = new ContentValues();
-                content.put("malop",malop);
-                content.put("tenlop",tenlop);
-                content.put("siso",siso);
-
-                if (mySql.insert("tbllop",null,content) == -1){
-                    Toast.makeText(MainActivity.this, "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                if (siso <= 0 || siso > 100){
+                    Toast.makeText(MainActivity.this, "Trường sĩ số không hợp lệ", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(MainActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                    ContentValues content = new ContentValues();
+                    content.put("malop",malop);
+                    content.put("tenlop",tenlop);
+                    content.put("siso",siso);
+
+                    if (mySql.insert("tbllop",null,content) == -1){
+                        Toast.makeText(MainActivity.this, "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                        loadLv();
+
+                    }
+                    clearText();
                 }
             }
         });
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String malop = edtMaLop.getText().toString();
+                int n = mySql.delete("tbllop", "malop = ?", new String[]{malop});
+
+                if (n == 0){
+                    Toast.makeText(MainActivity.this, "Ko có bản ghi nào để xóa", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, n+" bản ghi đã bị xóa", Toast.LENGTH_SHORT).show();
+                    loadLv();
+                }
+                clearText();
+            }
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                String malop = edtMaLop.getText().toString();
+
+                int siso = Integer.parseInt("0" + edtSiSo.getText().toString());
+
+                if (siso >0 && siso <= 100){
+                    ContentValues content = new ContentValues();
+                    content.put("siso",siso);
+                    int n = mySql.update("tbllop",content,"malop = ?",new String[]{malop});
+                    if (n == 0){
+                        Toast.makeText(MainActivity.this, "Ko có bản ghi nào được cập nhật!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                        loadLv();
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this, "Trường sĩ số ko hợp lệ", Toast.LENGTH_SHORT).show();
+                }
+                clearText();
+            }
+        });
+
+
+        btnQuery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadLv();
+            }
+        });
+
+    }
+    private void loadLv() {
+        listSinhVien.clear();
+        Cursor c = mySql.query("tbllop", null,null,null,null,null,null);
+        c.moveToNext();
+        String data = "";
+        while (!c.isAfterLast()){
+            data = c.getString(0) + " - " + c.getString(1) + " - " + c.getString(2);
+            c.moveToNext();
+            listSinhVien.add(data);
+        }
+        c.close();
+        sinhVienAdapter.notifyDataSetChanged();
+    };
+    private void clearText(){
+        edtMaLop.setText("");
+        edtTenLop.setText("");
+        edtSiSo.setText("");
     }
 }
