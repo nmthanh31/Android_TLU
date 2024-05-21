@@ -119,21 +119,48 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String malop = edtMaLop.getText().toString();
+                String tenlop = edtTenLop.getText().toString();
 
                 int siso = Integer.parseInt("0" + edtSiSo.getText().toString());
 
-                if (siso >0 && siso <= 100){
-                    ContentValues content = new ContentValues();
-                    content.put("siso",siso);
-                    int n = mySql.update("tbllop",content,"malop = ?",new String[]{malop});
-                    if (n == 0){
-                        Toast.makeText(MainActivity.this, "Ko có bản ghi nào được cập nhật!", Toast.LENGTH_SHORT).show();
+                if(tenlop.isEmpty()){
+                    if (siso >0 && siso <= 100){
+                        ContentValues content = new ContentValues();
+                        content.put("siso",siso);
+                        int n = mySql.update("tbllop",content,"malop = ?",new String[]{malop});
+                        if (n == 0){
+                            Toast.makeText(MainActivity.this, "Ko có bản ghi nào được cập nhật!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                            loadLv();
+                        }
                     }else{
-                        Toast.makeText(MainActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
-                        loadLv();
+                        Toast.makeText(MainActivity.this, "Trường sĩ số ko hợp lệ", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(MainActivity.this, "Trường sĩ số ko hợp lệ", Toast.LENGTH_SHORT).show();
+                    if (siso == 0){
+                        ContentValues content = new ContentValues();
+
+                        content.put("tenlop",tenlop);
+                        int n = mySql.update("tbllop",content,"malop = ?",new String[]{malop});
+                        if (n == 0){
+                            Toast.makeText(MainActivity.this, "Ko có bản ghi nào được cập nhật!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                            loadLv();
+                        }
+                    }else{
+                        ContentValues content = new ContentValues();
+                        content.put("siso",siso);
+                        content.put("tenlop",tenlop);
+                        int n = mySql.update("tbllop",content,"malop = ?",new String[]{malop});
+                        if (n == 0){
+                            Toast.makeText(MainActivity.this, "Ko có bản ghi nào được cập nhật!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                            loadLv();
+                        }
+                    }
                 }
                 clearText();
             }
