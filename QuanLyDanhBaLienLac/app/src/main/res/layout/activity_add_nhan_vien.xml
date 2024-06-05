@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNhanVienActivity"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:background="#47F6E6"
+        android:textColor="@color/white"
+        android:text="Thêm nhân viên"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <EditText
+            android:id="@+id/editTextHoTen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ và tên"
+            android:textColorHint="#636363"
+            />
+
+        <EditText
+            android:id="@+id/editTextChucVu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Chức vụ"
+            android:textColorHint="#636363"
+            />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColorHint="#636363"
+            />
+
+        <EditText
+            android:id="@+id/editTextSdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:textColorHint="#636363"
+            />
+        <EditText
+            android:id="@+id/editTextAnhDaiDien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ảnh đại diện"
+            android:textColorHint="#636363"
+            />
+        <Spinner
+            android:id="@+id/spnDonVi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"/>
+        <Button
+            android:id="@+id/buttonAddNhanVien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm Nhân viên"
+            android:layout_centerInParent="true"
+            android:backgroundTint="#47F6E6"
+            />
+    </LinearLayout>
+
+</LinearLayout>

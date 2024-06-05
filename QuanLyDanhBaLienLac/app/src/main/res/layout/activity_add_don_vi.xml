@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddDonViActivity"
+    android:orientation="vertical"
+
+    >
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:background="#47F6E6"
+        android:textColor="@color/white"
+        android:text="Thêm đơn vị"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <EditText
+            android:id="@+id/editTextTenDonVi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên đơn vị"
+            android:textColorHint="#636363"
+            />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColorHint="#636363"
+            />
+
+        <EditText
+            android:id="@+id/editTextWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Website"
+            android:textColorHint="#636363"
+            />
+
+        <EditText
+            android:id="@+id/editTextLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Logo"
+            android:textColorHint="#636363"
+            />
+        <EditText
+            android:id="@+id/editTextDiaChi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Địa chỉ"
+            android:textColorHint="#636363"
+            />
+        <EditText
+            android:id="@+id/editTextSDT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:textColorHint="#636363"
+            />
+        <EditText
+            android:id="@+id/editTextMaDonViCha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mã đơn vị"
+            android:textColorHint="#636363"
+            android:inputType="number"/>
+        <Button
+            android:id="@+id/btnAddDonVi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm Don Vi"
+            android:backgroundTint="#47F6E6"
+            android:layout_marginTop="20dp"
+            />
+    </LinearLayout>
+</LinearLayout>
